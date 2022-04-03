@@ -33,6 +33,7 @@ const context = canvas.getContext('2d');
 const scoreBlock = document.querySelector('.game-score .score-count')
 
 drawScore();
+// randomPositionBerry();
 
 function gameLoop() {
     
@@ -46,6 +47,7 @@ function gameLoop() {
     context.clearRect(0, 0, canvas.width, canvas.height);
 
     drawSnake();
+    drawBerry();
 }
 requestAnimationFrame( gameLoop );
 
@@ -98,7 +100,50 @@ function drawSnake(){
                 config.maxStep = 4;
             }
         }
+
+        for(let i = index + 1; i < snake.talls.length; i++) {
+
+            if(el.x == snake.talls[i].x && el.y == snake.talls[i].y) {
+                refreshGame();
+            }
+        }
     
     })
 }
-    
+
+
+function drawBerry() {
+
+    context.beginPath();
+    context.fillStyle = '#A00034';
+    context.arc(
+        berry.x + (config.sizeCell / 2),
+        berry.y + (config.sizeCell / 2),
+        config.sizeBerry, 0, 2 * Math.PI);
+    context.fill();
+}
+
+
+function randomPositionBerry() {
+    berry.x = getRandomInt(0, canvas.width / config.sizeCell) * config.sizeCell;
+    berry.y = getRandomInt(0, canvas.height / config.sizeCell) * config.sizeCell;
+}
+
+
+
+document.addEventListener('keydown', function(e) {
+
+    if(e.code == 'KeyW'){
+        snake.dy = -config.sizeCell;
+        snake.dx = 0;
+    } else if (e.code == 'KeyA') {
+        snake.dx = -config.sizeCell;
+        snake.dy = 0;
+    } else if (e.code == 'KeyS') {
+        snake.dy = config.sizeCell;
+        snake.dx = 0;
+    } else if (e.code == 'KeyD') {
+        snake.dx = config.sizeCell;
+        snake.dy = 0;
+    }
+});
