@@ -147,3 +147,22 @@ document.addEventListener('keydown', function(e) {
         snake.dy = 0;
     }
 });
+
+// document.addEventListener('keydown', function(e) {
+
+//     if(e.code == 'KeyY'){
+//         snake.dy = -config.sizeCell;
+//         snake.dx = 0;
+//     } else if (e.code == 'KeyG') {
+//         snake.dx = -config.sizeCell;
+//         snake.dy = 0;
+//     } else if (e.code == 'KeyH') {
+//         snake.dy = config.sizeCell;
+//         snake.dx = 0;
+//     } else if (e.code == 'KeyJ') {
+//         snake.dx = config.sizeCell;
+//         snake.dy = 0;
+//     }
+// });
+
+
