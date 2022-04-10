@@ -33,7 +33,7 @@ const context = canvas.getContext('2d');
 const scoreBlock = document.querySelector('.game-score .score-count')
 
 drawScore();
-// randomPositionBerry();
+randomPositionBerry();
 
 function gameLoop() {
     
@@ -68,6 +68,8 @@ function drawSnake(){
     snake.x += snake.dx;
     snake.y += snake.dy;
 
+    collisionBorder();
+
     snake.talls.unshift( {x: snake.x, y: snake.y});
 
     if( snake.talls.length > snake.maxTalls){
@@ -88,6 +90,8 @@ function drawSnake(){
 
         if(el.x === berry.x && el.y === berry.y) {
             snake.maxTalls++;
+            incScore();
+            randomPositionBerry();
     
 
             if( score === 10) {
@@ -165,4 +169,31 @@ document.addEventListener('keydown', function(e) {
 //     }
 // });
 
+function collisionBorder() {
 
+    if(snake.x < 0) {
+        snake.x = canvas.width - config.sizeCell;
+    } else if (snake.x >= canvas.width) {
+        snake.x = 0;
+    }
+
+    if (snake.y < 0) {
+        snake.y = canvas.height - config.sizeCell;
+    } else if (snake.y >= canvas.height){
+        snake.y = 0;
+    }
+}
+
+function refreshGame() {
+    score = 0;
+    drawScore();
+
+    snake.x = 160;
+    snake.y = 160;
+    snake.talls = [];
+    snake.maxTalls = 3;
+    snake.dx = config.sizeCell;
+    snake.dy = 0;
+
+    randomPositionBerry();
+}
