@@ -135,40 +135,40 @@ function randomPositionBerry() {
 
 
 
-document.addEventListener('keydown', function(e) {
-    console.log('Подслушиватель', e);
-
-    if(e.code == 'ArrowUp'){
-        snake.dy = -config.sizeCell;
-        snake.dx = 0;
-    } else if (e.code == 'ArrowLeft') {
-        snake.dx = -config.sizeCell;
-        snake.dy = 0;
-    } else if (e.code == 'ArrowDown') {
-        snake.dy = config.sizeCell;
-        snake.dx = 0;
-    } else if (e.code == 'ArrowRight') {
-        snake.dx = config.sizeCell;
-        snake.dy = 0;
-    }
-});
-
 // document.addEventListener('keydown', function(e) {
+//     console.log('Подслушиватель', e);
 
-//     if(e.code == 'KeyY'){
+//     if(e.code == 'ArrowUp'){
 //         snake.dy = -config.sizeCell;
 //         snake.dx = 0;
-//     } else if (e.code == 'KeyG') {
+//     } else if (e.code == 'ArrowLeft') {
 //         snake.dx = -config.sizeCell;
 //         snake.dy = 0;
-//     } else if (e.code == 'KeyH') {
+//     } else if (e.code == 'ArrowDown') {
 //         snake.dy = config.sizeCell;
 //         snake.dx = 0;
-//     } else if (e.code == 'KeyJ') {
+//     } else if (e.code == 'ArrowRight') {
 //         snake.dx = config.sizeCell;
 //         snake.dy = 0;
 //     }
 // });
+
+document.addEventListener('keydown', function(e) {
+
+    if(e.code == 'KeyW'){
+        snake.dy = -config.sizeCell;
+        snake.dx = 0;
+    } else if (e.code == 'KeyA') {
+        snake.dx = -config.sizeCell;
+        snake.dy = 0;
+    } else if (e.code == 'KeyS') {
+        snake.dy = config.sizeCell;
+        snake.dx = 0;
+    } else if (e.code == 'KeyD') {
+        snake.dx = config.sizeCell;
+        snake.dy = 0;
+    }
+});
 
 function collisionBorder() {
 
