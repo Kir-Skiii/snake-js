@@ -155,16 +155,16 @@ function randomPositionBerry() {
 
 document.addEventListener('keydown', function(e) {
 
-    if(e.code == 'KeyW'){
+    if(e.code == 'KeyW' || e.code== 'ArrowUp'){
         snake.dy = -config.sizeCell;
         snake.dx = 0;
-    } else if (e.code == 'KeyA') {
+    } else if (e.code == 'KeyA' || e.code=='ArrowLeft') {
         snake.dx = -config.sizeCell;
         snake.dy = 0;
-    } else if (e.code == 'KeyS') {
+    } else if (e.code == 'KeyS' || e.code=='ArrowDown') {
         snake.dy = config.sizeCell;
         snake.dx = 0;
-    } else if (e.code == 'KeyD') {
+    } else if (e.code == 'KeyD' || e.code=='ArrowRight') {
         snake.dx = config.sizeCell;
         snake.dy = 0;
     }
